@@ -1,0 +1,800 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+
+body, header, aside, div, ul, li, a, h1, h2, h3, h4, h5, h6, p, a, figure {
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  --bg-color: #12365b; /* color de fondo principal 0d2641*/
+  --medium-color: #0d2641;
+  --dark-color: #0f172a;
+  --light-color: rgb(20, 184, 166);
+  --border-color: #14b8a6;
+  --text-color: rgb(158, 172, 170);
+  background-color: var(--bg-color);
+  background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
+  font-family: sans-serif;
+  color: var(--text-color);
+}
+
+.subtitle {
+  font-family: 'Fira Code', 'Courier New', Courier, monospace;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--light-color);
+}
+
+
+
+/* ------------HEADER SECTION------------ */
+
+.header {
+  background-color: var(--dark-color);
+  background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
+  padding: 0 1rem;
+  border-bottom: 1px solid var(--border-color);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  height: 90px;
+  align-items: center;
+}
+
+.nav__logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--light-color);
+  text-decoration: none;
+  padding-left: 5rem;
+}
+
+.nav__ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem; 
+  padding-right: 5rem;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+
+.nav__toggle {
+  display: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 2rem;
+  color: var(--light-color);
+  background: none;
+}
+
+.nav__link:hover {
+  color: var(--light-color);
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+}
+
+
+/* ------------ HEADER MEDIA QUERIES ------------ */
+
+@media (max-width: 1024px) {
+  .nav {
+    height: 85px;
+  }
+  .nav__logo {
+    font-size: 1.3rem; 
+    padding-left: 1rem;
+  }
+  .nav__ul {
+    gap: 1rem; 
+    padding-right: 1rem;;
+  }
+  .nav__link {
+    font-size: .9rem; 
+  }
+}
+
+@media (max-width: 600px) {
+  .nav__toggle {
+    display: block;
+    transition: transform .2s ease;
+  }
+  .nav__toggle[aria-expanded="true"] {
+    transform: rotate(90deg);
+    color: #fff; 
+  }
+  .nav {
+    height: 70px;
+  }
+  .nav__ul {
+    flex-direction: column; 
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 250px; 
+    height: calc(100dvh - 70px); 
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+    
+    background-color: var(--dark-color);
+    background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
+
+    border-left: 1px solid var(--border-color); 
+    border-top: 1px solid var(--border-color);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+  }
+
+  .nav__ul.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  .nav__link {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(158, 172, 170, 0.6);
+    color: rgba(158, 172, 170, 0.6);
+  }
+
+  .nav__link:hover,
+  .nav__link:focus {
+    color: var(--light-color);
+    padding-left: 0.5rem; 
+  }
+  .nav__logo {
+    font-size: 1.1rem;
+  }
+}
+
+/* ------------ END HEADER SECTION ------------ */
+
+/* ------------ START SIDEBAR SECTION ------------ */
+
+.sidebar {
+  position: fixed;
+  height: 250px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 70px;
+  background-color: var(--dark-color);
+  background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 4px 4px 0;
+  border-left: none;
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+  will-change: transform;
+}
+
+.sidebar__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.7rem;
+  padding-right: 5px;
+}
+
+
+.sidebar__links a img {
+  width: 32px;              /* tamaño uniforme */
+  height: 32px;
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.github-svg:hover,
+.gmail-svg:hover,
+.linkedin-svg:hover {
+  filter: brightness(2) contrast(200%);
+}
+
+.github-svg:active,
+.linkedin-svg:active,
+.gmail-svg:active {
+  box-shadow: 0 0 8px 4px rgba(20, 184, 166, 0.6);
+  border-radius: 2px;
+}
+
+/* ------------ SIDEBAR MEDIA QUERIES ------------ */
+
+@media (max-width: 900px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+/* ------------ END SIDEBAR SECTION ------------ */
+
+/* ------------ ABOUT ME SECTION ------------ */
+
+.about-me {
+  width: 100%;
+  max-width: 850px;
+  height: calc(100dvh - 90px);
+  margin-top: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  padding: 2rem;
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  height: calc(100dvh - 90px);
+  margin-top: 90px; 
+}
+
+h1 {
+  font-family: 'Fira Code', 'Courier New', Courier, monospace;
+  padding: 0 30px;
+  font-size: 2.5rem;
+  color: var(--light-color, #ffffff);
+  text-align: center;
+  font-weight: 900;
+  margin-bottom: 40px;
+}
+
+/* Cursor parpadeante */
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--light-color, #ffffff);
+  animation: blink 0.75s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
+#terminal {
+  font-family: 'Ubuntu', sans-serif;
+  width: 100%;
+  height: 65vh;
+  max-height: 520px;
+  background-color: var(--dark-color);
+  background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
+  border-radius: 8px 8px 6px 6px;
+  box-shadow: 0 2px 3px rgba(20, 184, 166, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  text-align: left;
+}
+
+/* Barra superior */
+#terminal__bar {
+  display: flex;
+  align-items: center;
+  height: 34px;
+  padding: 0 12px;
+  background: linear-gradient(180deg, var(--dark-color) 0%,  var(--bg-color) 100%);
+  position: relative;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+#bar__buttons {
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+
+.bar__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 8px;
+  height: 13px;
+  width: 13px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(#7d7871 0%, #595953 100%);
+  color: rgba(0,0,0,0.6);
+  cursor: pointer;
+}
+
+#bar__button--exit { 
+  background: var(--light-color); 
+  color: #fff;
+} 
+
+#bar__user {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #d5d0ce; 
+  font-size: 13px;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+/* Área de contenido */
+#terminal__body {
+  flex: 1;
+  padding: 16px 20px;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #ffffff;
+  overflow-y: auto;
+}
+
+/* Prompt */
+.terminal__prompt {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.prompt__user { 
+  color: #8ae234;
+  font-weight: bold;
+}
+
+.prompt__symbol {
+  color: #ffffff;
+}
+
+.prompt__path { 
+  color: #729bcf;
+  font-weight: bold;
+}
+
+.prompt__command {
+  color: #ffffff;
+  margin-left: 4px;
+}
+
+.prompt--active {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+#prompt__text {
+  color: #ffffff;
+  white-space: pre;
+}
+
+/* Ocultar input real sin romper foco */
+#terminal__input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+/* Cursor de bloque ajustado */
+.terminal__cursor {
+  display: inline-block;
+  width: 9px;
+  height: 1.1em;
+  background-color: #ffffff;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink { 
+  0%, 100% { opacity: 1; } 
+  50% { opacity: 0; }
+}
+
+/* Salida y resaltados */
+.terminal__output {
+  margin: 6px 0 16px 0;
+  color: #d3d7cf;
+}
+
+.terminal__output strong {
+  color: #ffffff;
+}
+
+.terminal__output a {
+  color: #729bcf;
+  text-decoration: underline;
+}
+
+.terminal__output a:hover {
+  color: #8ae234;
+}
+
+.highlight {
+  color: #fce94f;
+  font-weight: bold;
+}
+
+/* Scrollbar personalizado */
+#terminal__body::-webkit-scrollbar {
+  width: 6px;
+}
+
+#terminal__body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+/* Responsive */
+@media (max-width: 600px) { 
+  #terminal { 
+    height: 80vh; 
+  }
+  #terminal__body {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
+/* ------------ ABOUT ME MEDIA QUERIES ------------ */
+
+@media (max-width: 600px) {
+  h1 {
+    padding-top: 20px;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+  }
+}
+
+/* ------------ END ABOUT ME SECTION ------------ */
+
+/* ------------ PROJECTS SECTION ------------ */
+
+.proyectos {
+  padding: 2rem;
+  text-align: center;
+  background-color: var(--medium-color);
+  background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
+  
+  /* 1. Usar min-height en lugar de height para que se expanda si falta espacio */
+  min-height: calc(100dvh - 90px);
+  
+  /* 2. Flexbox para centrar verticalmente todo el contenido */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* 3. Reemplazar padding-top fijo por margin-top para respetar el header fijo sin romper el centro */
+  margin-top: 90px;
+  box-sizing: border-box;
+}
+
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.proyectos-container {
+  overflow: hidden;
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.proyectos-track {
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s, transform 0.2s, opacity 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Ubicación exacta de cada botón */
+.prev-btn {
+  left: 0.5rem;
+}
+
+.next-btn {
+  right: 0.5rem;
+}
+
+.carousel-btn:hover {
+  background: var(--dark-color);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.proyecto {
+  background-color: var(--dark-color);
+  background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  flex: 0 0 calc(33.333% - 1.35rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  transform: scale(0.9);
+  opacity: 0.6;
+  transition: transform 0.4s ease, opacity 0.4s ease, border-color 0.4s ease;
+}
+
+.proyecto.is-active {
+  transform: scale(1.05);
+  opacity: 1;
+  border-color: var(--light-color, #ffffff);
+  z-index: 2;
+}
+
+/* Adaptación responsive en dispositivos pequeños */
+@media (max-width: 900px) {
+  .proyecto {
+    flex: 0 0 calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel-wrapper {
+    padding: 0 2.5rem;
+  }
+  
+  .proyecto {
+    flex: 0 0 100%;
+  }
+
+  .carousel-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+}
+
+.proyecto figure {
+  margin: 0;
+  width: 100%;
+}
+
+.proyecto img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover; /* Mantiene la proporción de la imagen sin deformar */
+  border-bottom: 1px solid var(--border-color);
+  border-radius: 7px 7px 0 0;
+  opacity: 0.4;
+  display: block;
+}
+
+.proyecto h3 {
+  margin: 1rem 0 0.5rem 0;
+  color: var(--light-color);
+}
+
+.proyecto p {
+  padding: 0 1rem 1rem 1rem; /* Un poco más de aire en los bordes */
+  color: var(--text-color);
+  font-size: 0.8rem;
+}
+
+/* ------------ END PROJECTS SECTION ------------ */
+
+/* ------------ CONTACT SECTION ------------ */
+
+
+
+
+.form {
+  padding-bottom: 200px;
+  z-index: 100;
+  height: calc(100dvh - 180px); 
+  display: flex;              
+  flex-direction: column;     
+  justify-content: center;    
+  align-items: center;        
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+
+.contact-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 500px;
+  gap: 15px;
+  font-family: Arial, sans-serif;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  font-size: 0.9em;
+  border-radius: 8px;
+  background-color: #0f172a;
+  border: 1px solid #14b8a6;
+  color: white;
+  transition: all 0.25s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border: 1px solid #14b8a6;
+  box-shadow: 0 0 12px rgba(20, 184, 166, 0.6);
+  outline: none;
+  transform: scale(1.01);
+}
+
+.contact-form input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #0f172a inset;
+  -webkit-text-fill-color: white !important;
+}
+
+.contact-form textarea {
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 120px;
+  resize: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #94a3b8;
+}
+
+.enviar-button {
+  font-weight: 600;
+  max-width: 160px;
+  align-self: center;
+  background-color: #14b8a6;
+  color: aliceblue;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
+}
+
+.enviar-button:hover {
+  background-color: #0d9488;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+input, textarea {
+  cursor: text;
+}
+/* ------------ CONTACT MEDIA QUERIES ------------ */
+
+@media (max-width: 1024px) {
+  .form {
+    height: calc(100dvh - 175px); 
+  }
+  
+}
+
+@media (max-width: 600px) {
+  .form {
+    height: calc(100dvh - 160px); 
+  }
+}
+
+/* ------------ END CONTACT SECTION ------------ */
+
+/* ------------ FOOTER SECTION ------------ */
+
+.footer {
+  bottom: 0;
+  width: 100%;
+  height: 90px;
+  background-color: var(--dark-color);
+  background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
+  color: var(--text-color);
+  padding: 1rem 4rem;
+  display: flex;
+  justify-content: space-between; /* izquierda y derecha */
+  align-items: center;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer__links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  background-color: var(--dark-color);
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.footer__links a img {
+  width: 20px;
+  height: 20px;
+}
+
+.footer__links a:hover {
+  transform: scale(1.1);
+  background-color: var(--hover-color); /* opcional */
+}
+
+@media (max-width: 600px) {
+  .footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+
+  .footer__links a {
+    width: 30px;
+    height: 30px;
+  }
+
+  .footer__links a img {
+    width: 15px;
+    height: 15px;
+  }
+}
+

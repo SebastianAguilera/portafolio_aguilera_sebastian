@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="#" class="nav__logo">Aguilera Sebastián</a>
+        <button id="nav-toggle" class="nav__toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+          <span class="material-icons-outlined">menu</span>
+        </button>
+
+        <ul class="nav__ul" id="nav-menu">
+          <li><a href="#about-me" class="nav__link">Sobre mí</a></li>
+          <li><a href="#proyectos" class="nav__link">Proyectos</a></li>
+          <li><a href="#contacto" class="nav__link">Contacto</a></li>
+        </ul>
+    </nav>
+  </header>
+  <aside class="sidebar">
+    <ul class="sidebar__links">
+      <li>
+        <a href="https://github.com/tuusuario" target="_blank" aria-label="GitHub">
+          <img src="svg/github-svg.svg" alt="github svg" class="github-svg" />
+        </a>
+      </li>
+      <li>
+        <a href="https://linkedin.com/in/tuusuario" target="_blank" aria-label="LinkedIn">
+          <img src="svg/linkedin-svg.svg" alt="linkedin svg" class="linkedin-svg" />
+        </a>
+      </li>
+      <li>
+        <a href="mailto:tuemail@gmail.com" aria-label="Gmail">
+          <img src="svg/gmail-svg.svg" alt="gmail svg" class="gmail-svg" />
+        </a>
+      </li>
+    </ul>
+  </aside>
+  <main class="content">
+      <section id="about-me" class="about-me active">
+        <h1>
+          <span class="static-text">Hi, I'm </span><span id="typewriter"></span><span class="cursor">|</span>
+        </h1>
+        <div id="terminal">
+      
+          <!-- Barra superior -->
+          <header id="terminal__bar">
+            <div id="bar__buttons">
+              <button class="bar__button" id="bar__button--exit">&#10005;</button>
+              <button class="bar__button">&#9472;</button>
+              <button class="bar__button">&#9723;</button>
+            </div>
+            <p id="bar__user">sebastian@ubuntu: ~</p>
+          </header>
+
+          <!-- Cuerpo de la terminal -->
+          <div id="terminal__body">
+            <div id="terminal__history">
+              <div class="terminal__output">
+                Bienvenido a mi portafolio interactivo v1.0.0<br>
+                Escribe <span class="highlight">'help'</span> para ver la lista de comandos disponibles.<br><br>
+              </div>
+            </div>
+
+            <!-- Prompt activo -->
+            <div class="terminal__prompt prompt--active">
+              <span class="prompt__user">sebastian@ubuntu</span><span class="prompt__symbol">:</span><span class="prompt__path">~</span><span class="prompt__symbol">$</span>
+              <span id="prompt__text"></span>
+              <span class="terminal__cursor"></span>
+              <!-- Input oculto pero accesible -->
+              <input type="text" id="terminal__input" autofocus autocomplete="off" spellcheck="false">
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="proyectos" class="proyectos">
+        <h2 class="subtitle">Proyectos</h2>
+        <div class="carousel-wrapper">
+          <button class="carousel-btn prev-btn" aria-label="Proyecto anterior">&larr;</button>
+          <div class="proyectos-container">
+            <div class="proyectos-track">
+              <article class="proyecto">
+                <figure>
+                  <img src="img/smartsearch.png" alt="Proyecto 1 Próximamente">
+                </figure>
+                <h3>Proyecto 1 (Próximamente)</h3>
+                <p>Saldrá en breve. Mantente atento a las novedades.</p>
+                <div class="proyecto-techs">
+                  <span class="tech-tag"><span class="tech-dot" style="background-color: #f7df1e;"></span>JavaScript</span>
+                  <span class="tech-tag"><span class="tech-dot" style="background-color: #61dafb;"></span>React</span>
+                </div>
+              </article>
+
+              <article class="proyecto">
+                <figure>
+                  <img src="img/smartsearch.png" alt="Proyecto 2 Próximamente">
+                </figure>
+                <h3>Proyecto 2 (Próximamente)</h3>
+                <p>Saldrá en breve. Mantente atento a las novedades.</p>
+                <div class="proyecto-techs">
+                  <span class="tech-tag"><span class="tech-dot" style="background-color: #f7df1e;"></span>JavaScript</span>
+                  <span class="tech-tag"><span class="tech-dot" style="background-color: #61dafb;"></span>React</span>
+                </div>
+              </article>
+              <article class="proyecto">
+                <figure>
+                  <img src="img/smartsearch.png" alt="Proyecto 3 Próximamente">
+                </figure>
+                <h3>Proyecto 3 (Próximamente)</h3>
+                <p>Saldrá en breve. Mantente atento a las novedades.</p>
+                <div class="proyecto-techs">
+                  <span class="tech-tag"><span class="tech-dot" style="background-color: #f7df1e;"></span>JavaScript</span>
+                  <span class="tech-tag"><span class="tech-dot" style="background-color: #61dafb;"></span>React</span>
+                </div>
+              </article>
+            </div>
+          </div>
+          <button class="carousel-btn next-btn" aria-label="Siguiente proyecto">&rarr;</button>
+        </div>
+      </section>
+      <section id="contacto" class="form">
+        <h2 class="subtitle">Contacto</h2>
+        <form id="contact-form" class="contact-form" action="https://formsubmit.co/6dc7464ff745019cc1a781dddd369444" method="POST">
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            placeholder="Tu nombre"
+            required
+          />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="tucorreo@gmail.com"
+            required
+          />
+          <textarea
+            id="mensaje"
+            name="mensaje"
+            placeholder="Escribí tu mensaje..."
+            required
+          ></textarea>
+
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" style="display:none">
+
+          <button type="submit" class="enviar-button">Enviar</button>
+        </form>
+        <p id="gracias" style="display:none; color:green; font-weight:bold;">
+          ¡Gracias por tu mensaje! Te responderé pronto.
+        </p>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer__left">
+        <p>© 2025 Aguilera Sebastián</p>
+      </div>
+      <div class="footer__right">
+        <ul class="footer__links">
+          <li>
+            <a href="https://github.com/tuusuario" target="_blank" aria-label="GitHub">
+              <img src="svg/github-svg.svg" alt="GitHub" />
+            </a>
+          </li>
+          <li>
+            <a href="https://linkedin.com/in/tuusuario" target="_blank" aria-label="LinkedIn">
+              <img src="svg/linkedin-svg.svg" alt="LinkedIn" />
+            </a>
+          </li>
+          <li>
+            <a href="mailto:tuemail@gmail.com" aria-label="Gmail">
+              <img src="svg/gmail-svg.svg" alt="Gmail" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  
+  <script src="main.js" defer></script>
+  
+</body>
+</html>
