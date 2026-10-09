@@ -113,9 +113,9 @@ function initTerminal() {
       <strong>DevOps & Infra:</strong> Docker, Traefik, Git/GitHub<br>
       <strong>Tools:</strong> Postman, Linux / Bash`,
 
-    contact: () => `Email: tu-email@ejemplo.com<br>
-      GitHub: <a href="https://github.com/tu-usuario" target="_blank">github.com/tu-usuario</a><br>
-      LinkedIn: <a href="https://linkedin.com/in/tu-usuario" target="_blank">linkedin.com/in/tu-usuario</a>`,
+    contact: () => `Email: <a href="mailto:sebaalejandro.aguilera@gmail.com" target="_blank">sebaalejandro.aguilera@gmail.com</a><br>
+      GitHub: <a href="https://github.com/SebastianAguilera" target="_blank">github.com/SebastianAguilera</a><br>
+      LinkedIn: <a href="https://www.linkedin.com/in/sebastian-aguilera-4555172a4/" target="_blank">linkedin.com/in/sebastian-aguilera-4555172a4</a>`,
 
     clear: () => {
       historyContainer.innerHTML = "";
